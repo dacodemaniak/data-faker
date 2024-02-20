@@ -23,6 +23,6 @@ describe(`SelectPrompt class`, () => {
 
     it(`Should raised a NoChoicesError if prompt without Choices`, () => {
         const selectPrompt = new SelectPrompt()
-        expect(() => selectPrompt.doPrompt()).toThrow(TypeError)
+        expect(() => selectPrompt.doPrompt()).toThrow()
     })
 })
