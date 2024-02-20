@@ -1,0 +1,5 @@
+### all js files ###
+*.js
+
+### Node modules ###
+node_modules
