@@ -1,7 +1,7 @@
-import { NoChoiceError } from './../src/cli/prompts/errors/no-choices.error'
-import { Prompt } from './../src/cli/prompts/prompt'
-import { SelectPrompt } from './../src/cli/prompts/select.prompt'
-import { ChoicesType } from './../src/cli/prompts/types/choices.type'
+import { NoChoiceError } from '../src/core/cli/prompts/errors/no-choices.error'
+import { Prompt } from '../src/core/cli/prompts/prompt'
+import { SelectPrompt } from '../src/core/cli/prompts/select.prompt'
+import { ChoicesType } from '../src/core/cli/prompts/types/choices.type'
 
 describe(`SelectPrompt class`, () => {
     let choices: Array<ChoicesType> = [

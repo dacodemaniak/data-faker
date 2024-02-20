@@ -1,6 +1,8 @@
 export class BuildConfigService {
     private static instance: BuildConfigService | null = null
 
+    private _outputLanguage: string = 'JSON'
+
     private constructor() {}
 
     public static getInstance(): BuildConfigService {
@@ -8,5 +10,9 @@ export class BuildConfigService {
             BuildConfigService.instance = new BuildConfigService()
         }
         return BuildConfigService.instance
+    }
+
+    set outputLanguage(outputLanguage: string) {
+        this._outputLanguage = outputLanguage
     }
 }

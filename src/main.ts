@@ -1,4 +1,4 @@
-import { SelectPrompt } from './cli/prompts/select.prompt'
+import { SelectPrompt } from './core/cli/prompts/select.prompt'
 export class Main {
     constructor() {
         this.bootstrap()

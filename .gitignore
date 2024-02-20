@@ -1,6 +1,6 @@
 ### all js files ###
 *.js
-*.map
+*.js.map
 
 ### Build path ###
 dist
