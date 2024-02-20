@@ -14,14 +14,15 @@ export class SelectPrompt extends Prompt {
         this._choices = choices
     }
 
-    async doPrompt(): Promise<void> {
+    async doPrompt(): Promise<string | number | boolean> {
         if (this._choices.length) {
             const answer = await select({
                 message: this._message,
                 choices: this._choices
             })
-            return
+            return answer
+        } else {
+            throw new NoChoiceError(`Unable to present prompt without any choices`)
         }
-        throw new NoChoiceError(`Unable to present prompt without any choices`)
     }
 }

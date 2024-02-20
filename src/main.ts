@@ -1,7 +1,12 @@
+import { SelectPrompt } from './cli/prompts/select.prompt'
 export class Main {
-    constructor() {}
+    constructor() {
+        this.bootstrap()
+    }
 
-    private bootstrap(): void {}
+    private async bootstrap() {
+
+    }
 }
 
 const app = new Main()

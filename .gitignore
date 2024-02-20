@@ -1,5 +1,12 @@
 ### all js files ###
 *.js
+*.map
+
+### Build path ###
+dist
 
 ### Node modules ###
 node_modules
+
+### Specifics VSCode ###
+.vscode
