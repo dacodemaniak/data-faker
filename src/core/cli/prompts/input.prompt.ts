@@ -11,6 +11,7 @@ import { Prompt } from './prompt';
 export class InputPrompt extends Prompt {
 
     private _default: string | number | boolean | null = null
+    private _validate: Function | null = null
 
     constructor() {
         super()
@@ -24,12 +25,24 @@ export class InputPrompt extends Prompt {
         this._default = defaultValue
     }
 
+    set validate(validateFunction: Function) {
+        this._validate = validateFunction
+    }
+
+    get validate(): Function | null {
+        return this._validate
+    }
+
     private _getConfig(): any {
         const config: any = {
             message: this._message
         }
         if (this._default !== null) {
             config['default'] = this._default
+        }
+
+        if (this._validate !== null) {
+            config['validate'] = this._validate
         }
 
         return config
