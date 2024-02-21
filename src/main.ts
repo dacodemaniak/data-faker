@@ -1,5 +1,5 @@
 import { BuildConfigService } from './core/build/build-config.service'
-import { LanguageSelectPrompt } from './cli/language-select-prompt'
+import { Builder } from './cli/builder'
 export class Main {
     constructor() {
         this.bootstrap()
@@ -7,6 +7,8 @@ export class Main {
 
     private async bootstrap() {
         BuildConfigService.getInstance()
+        // Gather informations
+        const builder = new Builder()
     }
 }
 
