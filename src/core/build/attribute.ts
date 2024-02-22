@@ -47,4 +47,13 @@ export class Attribute {
     get nullAuthorized(): boolean {
         return this._nullAuthorized
     }
+
+    toString(): string {
+        let output = `|     ${this._name}     |`
+        output += `     ${this._type }     |`
+        output += `     ${this._length !== undefined ? this._length : ''}     |`
+        output += `     ${this._nullAuthorized ? 'NULL' : 'NOT NULL'}     |`
+        output += `     ${this._isRequired ? 'Required' : 'Not required'}     |\n`
+        return output
+    }
 }

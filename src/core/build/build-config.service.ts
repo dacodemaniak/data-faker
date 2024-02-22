@@ -51,7 +51,10 @@ export class BuildConfigService {
     toString(): string {
         let output = `What you are about to generate :\n`
         output += `Output style : ${this._outputLanguage}\n`
-        output += `Generate DDL or Types : ${this._outputDDLOrTypes ? 'yes': 'no'}`
+        output += `Generate DDL or Types : ${this._outputDDLOrTypes ? 'yes': 'no'}\n`
+        for (let entity of this._entities) {
+            output += entity.toString()
+        }
         return output
     }
 }

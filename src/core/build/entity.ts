@@ -25,4 +25,13 @@ export class Entity {
         this._attributes.push(attribute)
     }
 
+    toString(): string {
+        let output = `****** Entity : ${this._name} ******\n`
+        for (let attribute of this._attributes) {
+            output += '+-------------------------+-------------------------+-------------------------+-------------------------+-------------------------+\n'
+            output += attribute.toString()
+            output += '+-------------------------+-------------------------+-------------------------+-------------------------+-------------------------+\n'
+        }
+        return output
+    }
 }
