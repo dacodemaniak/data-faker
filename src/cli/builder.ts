@@ -2,6 +2,8 @@ import { BuildConfigService } from "../core/build/build-config.service"
 import { EntityInputPrompt } from "./entity-input-prompt"
 import { HowmanyrowsInputPrompt } from "./howmanyrows-input-prompt"
 import { LanguageSelectPrompt } from "./language-select-prompt"
+import { AttributeNameInputPrompt } from './attribute-name-input-prompt'
+import { BuildDDLInputPrompt } from './build-ddl-input-prompt'
 
 /**
  * Builder
@@ -27,20 +29,30 @@ export class Builder {
         const outputType = new LanguageSelectPrompt()
 
         let entityAnwser
+        let attributeAnswer
 
         await outputType.prompt()
         do {
             const entityPrompt = new EntityInputPrompt()
             entityAnwser = await entityPrompt.prompt()
-            // Loop over attributes of this entity
+
             if (entityAnwser !== '') {
+                // Loop over attributes of this entity
+                do {
+                    const attributePrompt = new AttributeNameInputPrompt()
+                    attributeAnswer = await attributePrompt.prompt()
+                } while(attributeAnswer !== '')
+
                 // Ask for how many rows we want
                 const howManyRowsInput = new HowmanyrowsInputPrompt()
                 await howManyRowsInput.prompt()
             }
 
         } while (entityAnwser !== '')
+        // Ask for DDL or Types building
+        const doDDLPrompt = new BuildDDLInputPrompt()
 
         // Presents what we are about to do
+        console.log(this._service.toString())
     }
 }

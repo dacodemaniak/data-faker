@@ -4,6 +4,8 @@ import { InputPrompt } from "../core/cli/prompts/input.prompt";
 import { TypeSelectPrompt } from "./type-select-prompt";
 import { SubtypeSelectPrompt } from './subtype-select-prompt'
 import { LengthInputPrompt } from './length-input-prompt'
+import { NullableInputPrompt } from './nullable-input-prompt'
+import { IsRequiredInputPrompt } from './is-required-input-prompt'
 import { StringSubtype } from "../core/build/enums/string-subtype.enum";
 import { TypeEnum } from "../core/build/enums/type-enum";
 
@@ -46,10 +48,20 @@ export class AttributeNameInputPrompt extends InputPrompt {
             doLength = false
 
             // Nullable attribute
-            
-            // isRequired only if JSON
+            const nullableInput = new NullableInputPrompt()
+            answer = await nullableInput.prompt()
+            attribute.nullAuthorized = <boolean> answer
 
+            // isRequired only if JSON
+            if (this._service.outputLanguage === 'JSON') {
+                const isRequiredInput = new IsRequiredInputPrompt()
+                answer = await isRequiredInput.prompt()
+                attribute.isRequired = <boolean> answer
+            }
+            // Add attribute to current entity
+            this._service.addAttribute(attribute)
         }
+
         return <string> attributeName
     }
 }

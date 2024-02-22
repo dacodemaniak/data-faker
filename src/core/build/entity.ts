@@ -21,4 +21,8 @@ export class Entity {
         return this._howManyRows
     }
 
+    addAttribute(attribute: Attribute): void {
+        this._attributes.push(attribute)
+    }
+
 }
