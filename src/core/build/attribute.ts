@@ -1,9 +1,9 @@
-import { EnumType } from "typescript"
 import { TypeEnum } from "./enums/type-enum"
+import { StringSubtype } from './enums/string-subtype.enum'
 
 export class Attribute {
     private _name: string = ''
-    private _type: TypeEnum = TypeEnum.STRING
+    private _type: TypeEnum | StringSubtype = TypeEnum.STRING
     private _length?: number
     private _isRequired: boolean = true
     private _nullAuthorized: boolean = false
@@ -16,11 +16,11 @@ export class Attribute {
         return this._name
     }
 
-    set type(type: TypeEnum) {
+    set type(type: TypeEnum | StringSubtype) {
         this._type = type
     }
 
-    get type(): TypeEnum {
+    get type(): TypeEnum | StringSubtype {
         return this._type
     }
 

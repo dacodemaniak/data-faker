@@ -1,6 +1,10 @@
 import { BuildConfigService } from "../core/build/build-config.service";
 import { InputPrompt } from "../core/cli/prompts/input.prompt";
 
+/**
+ * @todo Move package to core
+ * @todo Add min and max to make function more friendly
+ */
 export class LengthInputPrompt extends InputPrompt {
     private _service: BuildConfigService
 

@@ -1,5 +1,5 @@
 export enum TypeEnum {
-    STRING      = 'string',
+    STRING      = 'string', // Subtypes required
     NUMBER      = 'number',
     FLOAT       = 'float',
     BOOLEAN     = 'boolean',
