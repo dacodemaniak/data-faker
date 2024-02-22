@@ -7,7 +7,6 @@ export class Attribute {
     private _length?: number
     private _isRequired: boolean = true
     private _nullAuthorized: boolean = false
-    private _value!: string | number | Date | any | Array<any>
 
     set name(name: string) {
         this._name = name
@@ -47,14 +46,6 @@ export class Attribute {
 
     get nullAuthorized(): boolean {
         return this._nullAuthorized
-    }
-
-    set value(value: string | number | Date | any | Array<any>) {
-        this._value = value
-    }
-
-    get value(): string | number | Date | any | Array<any> {
-        return this._value
     }
     
     toString(): string {
