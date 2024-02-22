@@ -4,7 +4,7 @@ import { HowmanyrowsInputPrompt } from "./howmanyrows-input-prompt"
 import { LanguageSelectPrompt } from "./language-select-prompt"
 import { AttributeNameInputPrompt } from './attribute-name-input-prompt'
 import { BuildDDLInputPrompt } from './build-ddl-input-prompt'
-
+import { ReadyToProceedInputPrompt } from './ready-to-proceed-input-prompt'
 /**
  * Builder
  *  Gather informations to build scheme
@@ -49,10 +49,23 @@ export class Builder {
             }
 
         } while (entityAnwser !== '')
+        
         // Ask for DDL or Types building
         const doDDLPrompt = new BuildDDLInputPrompt()
+        const doDDL = await doDDLPrompt.prompt()
+        this._service.outputDDLOrTypes = doDDL
 
         // Presents what we are about to do
         console.log(this._service.toString())
+
+        // Ready to proceed ?
+        const ready = new ReadyToProceedInputPrompt()
+        const answer = await ready.prompt()
+
+        if (answer) {
+
+        } else {
+            console.log(`Re run process to make your entities and feed`)
+        }
     }
 }
